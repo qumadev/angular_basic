@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Component } from '@angular/core';
+
 import {NgOptimizedImage} from '@angular/common';
-import {Product} from './models/product.model';
+
 
 @Component({
   selector: 'app-root',
@@ -10,17 +10,9 @@ import {Product} from './models/product.model';
 })
 export class AppComponent {
   title = 'storeapp';
-  http = inject(HttpClient)
-  products: Product[] = []
+
 
   changeTitle(){
     this.title = 'changed'
-  }
-
-  ngOnInit(){
-    this.http.get<Product[]>('https://api.escuelajs.co/api/v1/users')
-      .subscribe((data) => {
-        this.products = data
-      })
   }
 }
